@@ -1,8 +1,10 @@
+import re
 from . import db
 from flaskr.model import Note
-from flask import Blueprint, render_template, flash
+from flask import Blueprint, render_template, flash, jsonify
 from flask_login import login_user, login_required, logout_user, current_user
 from flask import request
+import json
 
 views = Blueprint('views', __name__)
 
@@ -26,3 +28,21 @@ def home():
 
             flash('Note Added!', category='success')
     return render_template('home.html', user=current_user)
+
+@views.route('/delete-note', methods=['POST'])
+def delete_note():
+    data =json.loads(request.data)
+    noteId = data['noteId']
+
+    note = Note.query.get(int(noteId))
+
+    if note:
+        if note.user_id == current_user.id:
+            try:
+                db.session.delete(note)
+                db.session.commit()
+
+            except:
+                flash('Error trying to delete the note. Please try again', category='error')
+
+    return jsonify({})
