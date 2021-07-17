@@ -42,7 +42,7 @@ def sign_up():
             except:
                 print('Error trying to save the user. Please Try Again')
 
-            flash('Account Created!',category='success ')
+            flash('Account Created!', category='success ')
 
             return redirect(url_for('views.home'))
 
