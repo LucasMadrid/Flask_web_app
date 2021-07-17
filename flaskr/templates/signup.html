@@ -2,6 +2,12 @@
 
 {% block title %}Sign Up{% endblock %}
 
+<<<<<<< HEAD
+<<<<<<< Updated upstream
+{% block content %}{% endblock %}
+=======
+=======
+>>>>>>> origin/master
 {% block content %}
 
 <form method="POST">
@@ -25,5 +31,20 @@
     <br>
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
+<<<<<<< HEAD
+{% with messages = get_flashed_messages(with_category=true) %}
+    {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-danger alter-dismissable fade show">
+            {{ message }}
+        </div>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
 
 {% endblock %}
+>>>>>>> Stashed changes
+=======
+
+{% endblock %}
+>>>>>>> origin/master
