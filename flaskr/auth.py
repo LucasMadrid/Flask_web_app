@@ -26,7 +26,7 @@ def sign_up():
             flash('Passwords dont\'t match.', category='error')
         elif len(password) < 7:
             flash('Password must be greater than 7 characters.', category='error')
-        
-        return render_template('signup.html', badPassword=False)
-    else:
-        return render_template('signup.html', badPassword=False)
+        else:
+            flash('Account Created!',category='success ')
+
+    return render_template('signup.html', badPassword=False)
